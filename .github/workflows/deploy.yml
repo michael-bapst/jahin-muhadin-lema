@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Dein aktiver Branch
+      - main
 
 jobs:
   deploy:
@@ -13,24 +13,8 @@ jobs:
       - name: Checkout repository content
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      # Stelle sicher, dass du im richtigen Verzeichnis arbeitest
-      - name: Install dependencies
-        working-directory: ./  # Stelle sicher, dass dies das Root-Verzeichnis ist, in dem sich package.json befindet
-        run: npm install
-
-      - name: Build the project
-        working-directory: ./  # Gleicher Pfad wie oben
-        run: npm run build
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # Branch für GitHub Pages
-          folder: dist       # Verzeichnis, das von Parcel erstellt wird
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          branch: gh-pages  # Der Branch, auf den GitHub Pages zeigt
+          folder: ./         # Der Ordner mit deinen statischen Dateien (HTML, CSS, JS)
