@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Dein aktiver Branch, z.B. "main"
 
 jobs:
   deploy:
@@ -11,13 +11,23 @@ jobs:
 
     steps:
       - name: Checkout repository content
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'  # Stelle sicher, dass du die richtige Node-Version verwendest
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Build the project
-        run: echo "No build needed for static site"  # Skip npm build step
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
-          folder: .   # Der Ordner, der die statischen Dateien enthält
+          branch: gh-pages  # Der Branch, auf den GitHub Pages deployt wird
+          folder: dist       # Das Verzeichnis, das von Parcel erstellt wird und deployt wird
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_DEPLOY_KEY }}  # Hier wird das Secret verwendet
