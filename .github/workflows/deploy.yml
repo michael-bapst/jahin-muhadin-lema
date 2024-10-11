@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Setze den Branch auf 'main' (oder deinen Standard-Branch)
+      - main
 
 jobs:
   deploy:
@@ -17,6 +17,7 @@ jobs:
         uses: actions/configure-pages@v1
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: JamesIves/github-pages-deploy-action@4.1.6  # Korrigierte GitHub Pages Action
         with:
-          branch: gh-pages  # GitHub Pages wird auf dem 'gh-pages' Branch deployed
+          branch: gh-pages  # GitHub Pages Branch
+          folder: ./        # Der Ordner, der veröffentlicht werden soll
