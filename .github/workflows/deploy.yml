@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Ändere dies zu deinem aktiven Branch
+      - main
 
 jobs:
   deploy:
@@ -11,21 +11,13 @@ jobs:
 
     steps:
       - name: Checkout repository content
-        uses: actions/checkout@v3  # Aktualisiere auf die neueste Version v3
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3  # Aktualisiere auf die neueste Version v3
-        with:
-          node-version: '18'  # Verwende die neueste Node-Version
-
-      - name: Install dependencies
-        run: npm install
+        uses: actions/checkout@v3
 
       - name: Build the project
-        run: npm run build  # Führe den Build-Prozess aus
+        run: echo "No build needed for static site"  # Skip npm build step
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # GitHub Pages Branch für Deployment
-          folder: dist       # Verzeichnis, das durch den Build-Prozess erstellt wird
+          branch: gh-pages
+          folder: .   # Der Ordner, der die statischen Dateien enthält
