@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Der Branch, der verwendet wird (oder ändere zu deinem aktiven Branch)
 
 jobs:
   deploy:
@@ -13,11 +13,19 @@ jobs:
       - name: Checkout repository content
         uses: actions/checkout@v2
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build  # Führe den Build-Prozess aus
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.1.6  # Korrigierte GitHub Pages Action
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages  # GitHub Pages Branch
-          folder: ./        # Der Ordner, der veröffentlicht werden soll
+          branch: gh-pages  # GitHub Pages Branch für Deployment
+          folder: dist       # Verzeichnis, das durch den Build-Prozess erstellt wird
