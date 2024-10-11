@@ -9,18 +9,19 @@
 </head>
 <body>
 <div class="overlay" id="overlay">
-    <button id="startButton">Hier klicken für dein Geburtstagsüberraschung!</button>
+    <button id="startButton">Hie klickä, für dini Geburikartä!</button>
 </div>
 
 <div class="slideshow-container">
+    <!-- Slide mit Einstieg2.jpg -->
     <div class="mySlides fade">
         <div class="image-container">
-            <img src="Images/Einstieg1.jpg" class="slide-img" alt="Bild Einstieg 1">
-            <img src="Images/Einstieg2.jpg" class="slide-img" alt="Bild Einstieg 2">
+            <img src="Images/Einstieg1.jpg" class="slide-img" alt="Bild Einstieg 2">
         </div>
         <div class="text" data-text="Ohmaan was mache mir nur ohni di Janine 😫😱 da klappet wieder mau nüt. Es duet üs Wahnsinnig leid, gits ke Hammermässigi Kartä, aber hoffe freusch di chli über das wasmer no grad gmeinsam so häre bracht hei :)"></div>
     </div>
 
+    <!-- Weitere Slides mit anderen Bildern -->
     <div class="mySlides fade">
         <div class="image-container">
             <img src="Images/Säschu.jpg" class="slide-img" alt="Bild Säschu">
@@ -56,11 +57,23 @@
         </div>
         <div class="text" data-text="Aues Guetee zum Geburtstag Jahin 🥳🥳 gniess di Tag, und Bhüet di Gott"></div>
     </div>
+
+    <!-- zeni.jpg und der neue Text -->
+    <div class="mySlides fade">
+        <div class="image-container">
+            <img src="Images/zeni.jpg" class="slide-img" alt="Bild zeni">
+        </div>
+        <div class="text" data-text="Aues guete zum Geburtstag 🥳🥳 scho ume 1 Jahr düre 😎😎😎😎"></div>
+    </div>
+
+    <!-- Vorherige und Nächste Buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 
-<!-- Beispielhintergrundmusik -->
+<!-- Hintergrundmusik -->
 <audio id="background-audio" preload="auto" loop>
-    <source src="audio/sample.mp3" type="audio/mpeg">
+    <source src="Audio/sample.mp3" type="audio/mpeg">
     Ihr Browser unterstützt das Audioelement nicht.
 </audio>
 

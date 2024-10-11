@@ -1,0 +1,22 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Setze den Branch auf 'main' (oder deinen Standard-Branch)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository content
+        uses: actions/checkout@v2
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v1
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
+        with:
+          branch: gh-pages  # GitHub Pages wird auf dem 'gh-pages' Branch deployed
